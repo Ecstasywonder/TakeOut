@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  backend-test:
+    build: .
+    volumes:
+      - ./:/app:cached
+    env_file:
+      - src/backend/.env
+    dns:
+      - 1.1.1.1
+    command: node scripts/testDbConnection.js
+    restart: 'no'
